@@ -78,20 +78,29 @@ def main():
     fancy_print(["*", "Mock Bitcoin Miner",
                  "Use https://chainquery.com/bitcoin-cli/getblock to get values in proper format.", "*"])
     version = input("Version (Hex): ")
-    assert len(version) == 8, "Improper hex format in version"
+    if len(version) != 8:
+        raise ValueError("Improper hex format in version")
     prevhash = input("Previous block's hash: ")
-    assert len(prevhash) == 64, "Improper hash format in previous hash"
+    if len(prevhash) != 64:
+        raise ValueError("Improper hash format in previous hash")
     merkle_root = input("Merkle Root: ")
-    assert len(merkle_root) == 64, "Improper hash format in merkle root"
+    if len(merkle_root) != 64:
+        raise ValueError("Improper hash format in merkle root")
     timestamp = input("Time (Decimal integer): ")
-    assert timestamp.isdigit(), "Improper decimal timestamp format"
+    if not timestamp.isdigit():
+        raise ValueError("Improper decimal format in timestamp")
     timestamp = int(timestamp)
     bits = input("Bits (Hex): ")
-    assert len(bits) == 8, "Improper hex format in bits"
+    if len(bits) != 8:
+        raise ValueError("Improper hex format in bits")
+
     block = Block(prevhash, bits, version, timestamp, merkle_root)
+
     input("Press enter to start mining.")
+
     start = time.time()
     block_hash = mine(block)
+
     print("Hash found:", block_hash)
     print("Winning nonce:", block.nonce)
     elapsed = time.time() - start
