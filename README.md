@@ -3,7 +3,7 @@ A mock Bitcoin mining program to demonstrate proof of work as well as block head
 
 # Instructions
 - Find a block you would like to mine.
-  - I recommend finding a block with a low nonce value: https://blockchair.com/bitcoin/blocks?s=nonce(asc)#f=id,nonce
+  - I recommend finding a block with a low nonce value: https://blockchair.com/bitcoin/blocks?s=nonce(asc)#f=id,nonce (The link is semi-broken. Scroll down to "Nonce" on the side, click the filter icon, and click "Apply".)
 - Go to https://chainquery.com/bitcoin-cli/getblock.
 - Paste the block hash. Make sure the verbosity is set to 1 (json block).
 - Click execute command.
